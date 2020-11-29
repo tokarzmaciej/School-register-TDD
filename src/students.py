@@ -3,5 +3,6 @@ class Students:
         self.students = {}
 
     def addStudent(self, id, name, surname, option):
-        return ""
+        raise TypeError("Bad_type_name_or_surname")
+
 
