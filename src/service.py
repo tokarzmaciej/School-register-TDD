@@ -2,8 +2,8 @@ import csv
 import json
 
 
-def export_student(id, name, surname, subjects, remarks):
-    if import_students() == {}:
+def exportStudent(id, name, surname, subjects, remarks):
+    if importStudents() == {}:
         with open("./data/db.csv", "a", newline='') as file:
             data = csv.writer(file, delimiter=",")
             data.writerow(["id", "name", "surname", "subjects", "remarks"])
@@ -14,7 +14,7 @@ def export_student(id, name, surname, subjects, remarks):
             data.writerow([id, name, surname, subjects, remarks])
 
 
-def import_students():
+def importStudents():
     with open("./data/db.csv", "r", newline='') as file:
         data = csv.DictReader(file, delimiter=",")
         students = {}

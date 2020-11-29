@@ -3,46 +3,46 @@ from src.service import *
 
 class Students:
 
-    def addStudent(self, id, name, surname, option):
+    def addStudent(self, id_student, name, surname, option):
         if type(name) != str or type(surname) != str:
             raise TypeError("Bad_type_name_or_surname")
         elif option == "w":
             reset()
-            export_student(str(id), name, surname, {}, {})
-            return "Add student", name, surname, import_students()[(str(id), name, surname)]
+            exportStudent(str(id_student), name, surname, {}, {})
+            return "Add student", name, surname, importStudents()[(str(id_student), name, surname)]
         elif option == "a":
-            keys = [*import_students()]
+            keys = [*importStudents()]
             for i in range(len(keys)):
                 keys[i] = keys[i][0]
-            if keys.__contains__(str(id)):
+            if keys.__contains__(str(id_student)):
                 raise Exception("This_id_already_exists")
             else:
-                export_student(str(id), name, surname, {}, {})
-                return list(import_students())
+                exportStudent(str(id_student), name, surname, {}, {})
+                return list(importStudents())
         else:
             raise Exception("Option_have_to_be_'w'_or_'a'")
 
-    def deleteStudent(self, id, name_student, surname_student):
-        keys = [*import_students()]
-        students = import_students()
+    def deleteStudent(self, id_student, name_student, surname_student):
+        keys = [*importStudents()]
+        students = importStudents()
         reset()
-        if keys.__contains__((str(id), name_student, surname_student)):
-            filterKeys = list(filter(lambda x: x != (str(id), name_student, surname_student), keys))
+        if keys.__contains__((str(id_student), name_student, surname_student)):
+            filterKeys = list(filter(lambda x: x != (str(id_student), name_student, surname_student), keys))
             for key in filterKeys:
-                id = key[0]
+                id_student = key[0]
                 name = key[1]
                 surname = key[2]
                 subjects = students[key]["subjects"]
                 remarks = students[key]["remarks"]
-                export_student(id, name, surname, subjects, remarks)
-            return list(import_students())
+                exportStudent(id_student, name, surname, subjects, remarks)
+            return list(importStudents())
         else:
             raise Exception("There_is_not_such_student")
 
-    def editStudent(self, id, name_student, surname_student, newName, newSurname):
-        keys = [*import_students()]
+    def editStudent(self, id_student, name_student, surname_student, new_name, new_surname):
+        keys = [*importStudents()]
         reset()
-        if type(newName) != str or type(newSurname) != str:
+        if type(new_name) != str or type(new_surname) != str:
             raise TypeError("Bad_type_newName_or_newSurname")
-        elif not keys.__contains__((str(id), name_student, surname_student)):
+        elif not keys.__contains__((str(id_student), name_student, surname_student)):
             raise Exception("There_is_not_such_student")
