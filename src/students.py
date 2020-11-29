@@ -21,17 +21,19 @@ class Students:
                 return list(import_students())
         else:
             raise Exception("Option_have_to_be_'w'_or_'a'")
-
     def deleteStudent(self, id, name_student, surname_student):
         keys = [*import_students()]
         students = import_students()
         reset()
-        filterKeys = list(filter(lambda x: x != (str(id), name_student, surname_student), keys))
-        for key in filterKeys:
-            id = key[0]
-            name = key[1]
-            surname = key[2]
-            subjects = students[key]["subjects"]
-            remarks = students[key]["remarks"]
-            export_student(id, name, surname, subjects, remarks)
-        return list(import_students())
+        if keys.__contains__((str(id), name_student, surname_student)):
+            filterKeys = list(filter(lambda x: x != (str(id), name_student, surname_student), keys))
+            for key in filterKeys:
+                id = key[0]
+                name = key[1]
+                surname = key[2]
+                subjects = students[key]["subjects"]
+                remarks = students[key]["remarks"]
+                export_student(id, name, surname, subjects, remarks)
+            return list(import_students())
+        else:
+            raise Exception("There_is_not_such_student")
