@@ -8,6 +8,13 @@ class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Students()
 
+    def test_edit_lack_student(self):
+        self.temp.addStudent(1, "Ala", "Poziomka", "w")
+        self.temp.addStudent(2, "Marcel", "Biala", "a")
+        assert_that(self.temp.editStudent) \
+            .raises(Exception) \
+            .when_called_with(2, "Aneta", "Czarna", "Asia", "Pola")
+
     def test_edit_type_error(self):
         self.temp.addStudent(1, "Ala", "Poziomka", "w")
         self.temp.addStudent(2, "Marcel", "Bialy", "a")
