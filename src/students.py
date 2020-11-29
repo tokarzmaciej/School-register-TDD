@@ -17,13 +17,13 @@ class Students:
             raise Exception("Option_have_to_be_'w'_or_'a'")
 
     def export_student(self, id, name, surname, subjects, remarks):
-        with open("../data/db.csv", "a", newline='') as file:
+        with open("./data/db.csv", "a", newline='') as file:
             data = csv.writer(file, delimiter=",")
             data.writerow(["id", "name", "surname", "subjects", "remarks"])
             data.writerow([id, name, surname, subjects, remarks])
 
     def import_students(self):
-        with open("../data/db.csv", "r", newline='') as file:
+        with open("./data/db.csv", "r", newline='') as file:
             data = csv.DictReader(file, delimiter=",")
             students = {}
             for row in data:
@@ -33,6 +33,6 @@ class Students:
             return students
 
     def reset(self):
-        reset = open("../data/db.csv", "w")
+        reset = open("./data/db.csv", "w")
         reset.write("")
         reset.close()
