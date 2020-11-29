@@ -5,3 +5,5 @@ class Students:
     def addStudent(self, id, name, surname, option):
         if type(name) != str:
             raise TypeError("Bad_type_name_or_surname")
+        elif type(surname) != str:
+            raise TypeError("Bad_type_name_or_surname")
