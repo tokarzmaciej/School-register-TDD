@@ -21,6 +21,7 @@ class Students:
                 return list(import_students())
         else:
             raise Exception("Option_have_to_be_'w'_or_'a'")
+
     def deleteStudent(self, id, name_student, surname_student):
         keys = [*import_students()]
         students = import_students()
