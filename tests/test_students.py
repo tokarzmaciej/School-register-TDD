@@ -8,6 +8,12 @@ class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Students()
 
+    def test_add_the_same_students(self):
+        self.temp.addStudent(2, "Beata", "Jankowska", "w")
+        assert_that(self.temp.addStudent) \
+            .raises(Exception) \
+            .when_called_with(2, "Beata", "Jankowska", "a")
+
     def test_add_few_students(self):
         self.temp.addStudent(generate().get_key(), "Ala", "Kot", "w")
         self.temp.addStudent(generate().get_key(), "Agata", "Kwiatek", "a")
