@@ -6,10 +6,12 @@ from src.students import Students
 class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Students()
+
     def test_add_student_positive(self):
         result = ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})
         assert_that(self.temp.addStudent(2, "Adam", "Nowak", "w")) \
             .is_equal_to(result)
+
     def test_add_student_bad_option(self):
         assert_that(self.temp.addStudent) \
             .raises(Exception) \
