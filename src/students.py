@@ -45,15 +45,18 @@ class Students:
         reset()
         if type(new_name) != str or type(new_surname) != str:
             raise TypeError("Bad_type_newName_or_newSurname")
-        elif not keys.__contains__((str(id_student), name_student, surname_student)):
-            raise Exception("There_is_not_such_student")
         else:
-            for key in keys:
-                subjects = students[key]["subjects"]
-                remarks = students[key]["remarks"]
-                if key == (str(id_student), name_student, surname_student):
-                    exportStudent(id_student, new_name, new_surname, subjects, remarks)
-                else:
-                    exportStudent(key[0], key[1], key[2], subjects, remarks)
-            return list(filter(lambda x: x == (str(id_student), new_name, new_surname), list(importStudents())))
-
+            if keys.__contains__((str(id_student), name_student, surname_student)):
+                for key in keys:
+                    subjects = students[key]["subjects"]
+                    remarks = students[key]["remarks"]
+                    if key == (str(id_student), name_student, surname_student):
+                        exportStudent(id_student, new_name, new_surname, subjects, remarks)
+                    else:
+                        idKey = key[0]
+                        name = key[1]
+                        surname = key[2]
+                        exportStudent(idKey, name, surname, subjects, remarks)
+                return list(filter(lambda x: x == (str(id_student), new_name, new_surname), list(importStudents())))
+            else:
+                raise Exception("There_is_not_such_student")
