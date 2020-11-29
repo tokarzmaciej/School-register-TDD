@@ -8,6 +8,13 @@ class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Students()
 
+    def test_edit_student_positive(self):
+        self.temp.addStudent(1, "Ala", "Kot", "w")
+        self.temp.addStudent(2, "Kasia", "Pola", "a")
+        self.temp.addStudent(3, "Ola", "Fiolek", "a")
+        assert_that(self.temp.editStudent(2, "Kasia", "Pola", "Asia", "Pola")[0][1]) \
+            .contains('Asia')
+
     def test_edit_lack_student(self):
         self.temp.addStudent(1, "Ala", "Poziomka", "w")
         self.temp.addStudent(2, "Marcel", "Biala", "a")
