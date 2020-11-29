@@ -11,6 +11,7 @@ class StudentsAssertPyTest(unittest.TestCase):
         assert_that(self.temp.addStudent) \
             .raises(Exception) \
             .when_called_with(2, "Jan", "Kowalski", "g")
+
     def test_add_student_surname_bad_type(self):
         assert_that(self.temp.addStudent) \
             .raises(TypeError) \
