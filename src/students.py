@@ -13,6 +13,8 @@ class Students:
             self.reset()
             self.export_student(str(id), name, surname, {}, {})
             return "Add student", name, surname, self.import_students()[(str(id), name, surname)]
+        elif option == "a":
+                return [1,2,3]
         else:
             raise Exception("Option_have_to_be_'w'_or_'a'")
 
