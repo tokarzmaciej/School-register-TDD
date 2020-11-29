@@ -8,6 +8,13 @@ class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Students()
 
+    def test_delete_lack_student(self):
+        self.temp.addStudent(1, "Kasia", "Polak", "w")
+        self.temp.addStudent(2, "Kacper", "Stoch", "a")
+        assert_that(self.temp.deleteStudent) \
+            .raises(Exception) \
+            .when_called_with(3, "Kasia", "Polak")
+
     def test_delete_student(self):
         self.temp.addStudent(1, "Kasia", "Polak", "w")
         self.temp.addStudent(2, "Kacper", "Stoch", "a")
