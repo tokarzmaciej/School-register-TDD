@@ -40,7 +40,5 @@ class Students:
             raise Exception("There_is_not_such_student")
 
     def editStudent(self, id, name_student, surname_student, newName, newSurname):
-        if type(newName) != str:
-            raise TypeError("Bad_type_newName_or_newSurname")
-        elif (type(newSurname) != str):
+        if type(newName) != str or type(newSurname) != str:
             raise TypeError("Bad_type_newName_or_newSurname")
