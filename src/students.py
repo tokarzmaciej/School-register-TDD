@@ -40,5 +40,9 @@ class Students:
             raise Exception("There_is_not_such_student")
 
     def editStudent(self, id, name_student, surname_student, newName, newSurname):
+        keys = [*import_students()]
+        reset()
         if type(newName) != str or type(newSurname) != str:
             raise TypeError("Bad_type_newName_or_newSurname")
+        elif not keys.__contains__((str(id), name_student, surname_student)):
+            raise Exception("There_is_not_such_student")
