@@ -39,6 +39,16 @@ class StudentsParameterizedPackage(unittest.TestCase):
         def test_student_add_class(self):
             self.assertEqual(self.tmp.addStudent(self.id, self.name, self.surname), self.expected)
 
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (2, "Beata", "Jankowska", "This_id_already_exists"),
+    ])
+    class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_add_exception_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.addStudent, self.id, self.name, self.surname)
+
 
 if __name__ == '__main__':
     unittest.main()
