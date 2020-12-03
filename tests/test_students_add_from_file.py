@@ -18,6 +18,18 @@ class StudentsParameterizedFile(unittest.TestCase):
                                  (inp4 + " " + inp5, inp6, inp7, {inp8: {}, inp9: {}}))
         fileTest.close()
 
+    def test_student_add_from_file_exceptions(self):
+        fileTest = open("data/test_students_add_exception.txt")
+        tmpStudents = Students()
+        for line in fileTest:
+            if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
+                continue
+            else:
+                data = line.split(" ")
+                inp1, inp2, inp3, message = (data[0], data[1], data[2], data[3].strip("\n"))
+                self.assertRaisesRegex(Exception, message, tmpStudents.addStudent, inp1, inp2, inp3)
+        fileTest.close()
+
 
 if __name__ == '__main__':
     unittest.main()
