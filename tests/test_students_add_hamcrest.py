@@ -17,5 +17,10 @@ class StudentsHamcrestTest(unittest.TestCase):
                     .with_args(2, "Beata", "Jankowska"),
                     raises(Exception))
 
+    def test_add_student_surname_bad_type(self):
+        assert_that(calling(self.temp.addStudent)
+                    .with_args(generate().get_key(), "Jan", 2),
+                    raises(TypeError))
+
     def tearDown(self):
         self.temp = None
