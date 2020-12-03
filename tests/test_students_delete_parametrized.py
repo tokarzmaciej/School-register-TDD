@@ -14,6 +14,12 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_delete_expand(self, id, name, surname, expected):
         self.assertNotIn(self.tmp.deleteStudent(id, name, surname), expected)
 
+    @parameterized.expand([
+        (3, "Kasia", "Polak", "There_is_not_such_student"),
+    ])
+    def test_student_delete_exceptions_expand(self, id, name, surname, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.deleteStudent, id, name, surname)
+
 
 if __name__ == '__main__':
     unittest.main()
