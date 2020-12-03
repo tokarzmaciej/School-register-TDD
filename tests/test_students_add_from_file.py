@@ -30,6 +30,18 @@ class StudentsParameterizedFile(unittest.TestCase):
                 self.assertRaisesRegex(Exception, message, tmpStudents.addStudent, inp1, inp2, inp3)
         fileTest.close()
 
+    def test_student_add_from_file_type_error(self):
+        fileTest = open("data/test_students_add_type_error.txt")
+        tmpStudents = Students()
+        for line in fileTest:
+            if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
+                continue
+            else:
+                data = line.split(" ")
+                inp1, inp2, inp3, message = (data[0], int(data[1]), bool(data[2]), data[3].strip("\n"))
+                self.assertRaisesRegex(TypeError, message, tmpStudents.addStudent, inp1, inp2, inp3)
+        fileTest.close()
+
 
 if __name__ == '__main__':
     unittest.main()
