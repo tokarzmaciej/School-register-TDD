@@ -26,6 +26,18 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_edit_type_error_expand(self, id, name, surname, new_name, new_surname, expected):
         self.assertRaisesRegex(TypeError, expected, self.tmp.editStudent, id, name, surname, new_name, new_surname)
 
+    @parameterized_class(("id", "name", "surname", "new_name", "new_surname", "expected"), [
+        (1, "Kasia", "Polak", "Asia", "Pola", "Asia"),
+
+    ])
+    class StudentParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_edit_class(self):
+            self.assertIn(self.tmp.editStudent(self.id, self.name, self.surname, self.new_name, self.new_surname)[0][1],
+                          self.expected)
+
 
 if __name__ == '__main__':
     unittest.main()
