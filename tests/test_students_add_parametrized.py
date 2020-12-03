@@ -49,6 +49,16 @@ class StudentsParameterizedPackage(unittest.TestCase):
         def test_student_add_exception_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.addStudent, self.id, self.name, self.surname)
 
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (generate().get_key(), "Jan", 2, "Bad_type_name_or_surname"),
+    ])
+    class StudentParameterizedErrorPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_add_type_error_class(self):
+            self.assertRaisesRegex(TypeError, self.expected, self.tmp.addStudent, self.id, self.name, self.surname)
+
 
 if __name__ == '__main__':
     unittest.main()
