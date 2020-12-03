@@ -12,5 +12,9 @@ class StudentsAssertPyTest(unittest.TestCase):
                     .with_args(3, "Kasia", "Polak"),
                     raises(Exception))
 
+    def test_delete_student(self):
+        assert_that(self.temp.deleteStudent(1, "Kasia", "Polak"),
+                    not_(contains_exactly(('1', 'Kasia', 'Polak'))))
+
     def tearDown(self):
         self.temp = None
