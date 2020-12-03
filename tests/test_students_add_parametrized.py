@@ -15,6 +15,11 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_add_expand(self, id, name, surname, expected):
         self.assertEqual(self.tmp.addStudent(id, name, surname), expected)
 
+    @parameterized.expand([
+        (2, "Beata", "Jankowska", "This_id_already_exists"),
+    ])
+    def test_student_add_exceptions_expand(self, id, name, surname, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.addStudent, id, name, surname)
 
 
 if __name__ == '__main__':
