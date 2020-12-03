@@ -21,6 +21,13 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_add_exceptions_expand(self, id, name, surname, expected):
         self.assertRaisesRegex(Exception, expected, self.tmp.addStudent, id, name, surname)
 
+    @parameterized.expand([
+        (generate().get_key(), "Jan", 2, "Bad_type_name_or_surname"),
+        (generate().get_key(), True, "Kowalski", "Bad_type_name_or_surname")
+    ])
+    def test_student_add_type_error_expand(self, id, name, surname, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.addStudent, id, name, surname)
+
 
 if __name__ == '__main__':
     unittest.main()
