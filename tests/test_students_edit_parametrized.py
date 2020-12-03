@@ -38,6 +38,18 @@ class StudentsParameterizedPackage(unittest.TestCase):
             self.assertIn(self.tmp.editStudent(self.id, self.name, self.surname, self.new_name, self.new_surname)[0][1],
                           self.expected)
 
+    @parameterized_class(("id", "name", "surname", "new_name", "new_surname", "expected"), [
+        (2, "Aneta", "Czarna", "Asia", "Pola", "There_is_not_such_student"),
+
+    ])
+    class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_edit_exception_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.editStudent, self.id, self.name, self.surname,
+                                   self.new_name, self.new_surname)
+
 
 if __name__ == '__main__':
     unittest.main()
