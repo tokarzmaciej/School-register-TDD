@@ -28,6 +28,17 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_add_type_error_expand(self, id, name, surname, expected):
         self.assertRaisesRegex(TypeError, expected, self.tmp.addStudent, id, name, surname)
 
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (generate().get_key(), "Adam", "Nowak", ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})),
+
+    ])
+    class StudentParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_add_class(self):
+            self.assertEqual(self.tmp.addStudent(self.id, self.name, self.surname), self.expected)
+
 
 if __name__ == '__main__':
     unittest.main()
