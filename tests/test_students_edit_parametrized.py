@@ -14,6 +14,11 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_student_edit_expand(self, id, name, surname, new_name, new_surname, expected):
         self.assertIn(self.tmp.editStudent(id, name, surname, new_name, new_surname)[0][1], expected)
 
+    @parameterized.expand([
+        (2, "Aneta", "Czarna", "Asia", "Pola", "There_is_not_such_student"),
+    ])
+    def test_student_edit_exceptions_expand(self, id, name, surname, new_name, new_surname, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.editStudent, id, name, surname, new_name, new_surname)
 
 
 if __name__ == '__main__':
