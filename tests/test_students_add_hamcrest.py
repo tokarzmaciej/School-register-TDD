@@ -12,5 +12,10 @@ class StudentsHamcrestTest(unittest.TestCase):
         result = ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})
         assert_that(self.temp.addStudent(generate().get_key(), "Adam", "Nowak"), equal_to(result))
 
+    def test_add_the_same_students(self):
+        assert_that(calling(self.temp.addStudent)
+                    .with_args(2, "Beata", "Jankowska"),
+                    raises(Exception))
+
     def tearDown(self):
         self.temp = None
