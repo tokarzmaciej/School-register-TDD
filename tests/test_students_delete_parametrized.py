@@ -22,7 +22,6 @@ class StudentsParameterizedPackage(unittest.TestCase):
 
     @parameterized_class(("id", "name", "surname", "expected"), [
         (1, "Kasia", "Polak", ('1', 'Kasia', 'Polak')),
-
     ])
     class StudentParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
@@ -30,6 +29,16 @@ class StudentsParameterizedPackage(unittest.TestCase):
 
         def test_student_delete_class(self):
             self.assertNotIn(self.tmp.deleteStudent(self.id, self.name, self.surname), self.expected)
+
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (3, "Kasia", "Polak", "There_is_not_such_student"),
+    ])
+    class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Students()
+
+        def test_student_delete_exception_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.deleteStudent, self.id, self.name, self.surname)
 
 
 if __name__ == '__main__':
