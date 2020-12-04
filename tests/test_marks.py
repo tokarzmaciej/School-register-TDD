@@ -3,10 +3,14 @@ from assertpy import assert_that
 from src.marks import Marks
 
 
-class SubjectsAssertPyTest(unittest.TestCase):
+class MarksAssertPyTest(unittest.TestCase):
 
     def setUp(self):
         self.temp = Marks()
+
+    def test_edit_mark_grade_bad_type(self):
+        assert_that(self.temp.editMark) \
+            .raises(TypeError).when_called_with(7, "Ewelina", "Swoboda", "physics", "quiz", False)
 
     def test_add_mark_positive(self):
         assert_that(self.temp.addMark(4, "Alicja", "Zielonka", "math", "test", 2)) \

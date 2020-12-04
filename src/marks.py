@@ -21,3 +21,5 @@ class Marks(Students):
                     raise Exception("Student_not_have_this_subject")
             else:
                 raise Exception("There_is_not_such_student")
+    def editMark(self, id, name_student, surname_student, name_subject, name_mark, grade):
+        return ""
