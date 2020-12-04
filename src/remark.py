@@ -13,3 +13,6 @@ class Remarks(Students):
                 return self.students[(str(id), name_student, surname_student)]["remarks"]
         else:
             raise Exception("There_is_not_such_student")
+
+    def editRemarkDescription(self, id, name_student, surname_student, name_remark, new_description_remark):
+        return ""
