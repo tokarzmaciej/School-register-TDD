@@ -8,7 +8,7 @@ class RemarksAddAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Remarks()
 
-    def test_edit_mark_description_positive(self):
+    def test_edit_remark_description_positive(self):
         assert_that(self.temp.editRemarkDescription(7, "Ewelina", "Swoboda", "competition", "second_place")) \
             .starts_with("second")
 
