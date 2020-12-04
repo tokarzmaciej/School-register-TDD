@@ -9,7 +9,7 @@ class Remarks(Students):
             if [*valueRemarks].__contains__(name_remark):
                 raise Exception("This_remark_already_exists")
             else:
-                self.students[(str(id), name_student, surname_student)]["remarks"][name_remark] = description_remark
+                valueRemarks[name_remark] = description_remark
                 return self.students[(str(id), name_student, surname_student)]["remarks"]
         else:
             raise Exception("There_is_not_such_student")
