@@ -12,6 +12,10 @@ class RemarksEditAssertPyTest(unittest.TestCase):
         assert_that(self.temp.editRemarkName(8, "Konrad", "Piasek", "disturbing_lesson", "disturbing_math_lesson")[1]) \
             .ends_with("math_lesson")
 
+    def test_edit_remark_name_lack_students(self):
+        assert_that(self.temp.editRemarkName) \
+            .raises(Exception).when_called_with(15, "Wiktor", "Nowak", "competition", "football_competition")
+
     def test_edit_remark_description_positive(self):
         assert_that(self.temp.editRemarkDescription(7, "Ewelina", "Swoboda", "competition", "second_place")) \
             .starts_with("second")

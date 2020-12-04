@@ -27,6 +27,7 @@ class Remarks(Students):
             raise Exception("There_is_not_such_student")
 
     def editRemarkName(self, id, name_student, surname_student, name_remark, new_name_remark):
-        valueRemarks = self.students[(str(id), name_student, surname_student)]["remarks"]
-        valueRemarks[new_name_remark] = valueRemarks.pop(name_remark)
-        return [*valueRemarks]
+        if self.keys.__contains__((str(id), name_student, surname_student)):
+            valueRemarks = self.students[(str(id), name_student, surname_student)]["remarks"]
+            valueRemarks[new_name_remark] = valueRemarks.pop(name_remark)
+            return [*valueRemarks]
