@@ -8,6 +8,10 @@ class RemarksAddAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Remarks()
 
+    def test_add_remark_already_exists(self):
+        assert_that(self.temp.addRemark) \
+            .raises(Exception).when_called_with(8, "Konrad", "Piasek", "competition", "first place")
+
     def test_add_remark_lack_student(self):
         assert_that(self.temp.addRemark) \
             .raises(Exception).when_called_with(10, "Gosia", "Rosa", "help", "preparing_appeal")
