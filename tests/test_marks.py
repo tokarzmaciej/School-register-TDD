@@ -8,6 +8,10 @@ class SubjectsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Marks()
 
+    def test_add_mark_positive(self):
+        assert_that(self.temp.addMark(4, "Alicja", "Zielonka", "math", "test", 2)) \
+            .contains(('test', 2))
+
     def test_add_mark_mark_already_exists(self):
         assert_that(self.temp.addMark) \
             .raises(Exception).when_called_with(6, "Michal", "Krakowiak", "art", "singing_hymn", 3)
