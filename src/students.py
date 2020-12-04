@@ -105,15 +105,15 @@ class Students:
             },
 
         }
+        self.keys = [*self.students]
 
     def addStudent(self, id_student, name, surname):
         if type(name) != str or type(surname) != str:
             raise TypeError("Bad_type_name_or_surname")
         else:
-            keys = [*self.students]
-            for i in range(len(keys)):
-                keys[i] = str(keys[i][0])
-            if keys.__contains__(str(id_student)):
+            for i in range(len(self.keys)):
+                self.keys[i] = str(self.keys[i][0])
+            if self.keys.__contains__(str(id_student)):
                 raise Exception("This_id_already_exists")
             else:
                 self.students[(str(id_student), name, surname)] = {}
@@ -122,19 +122,17 @@ class Students:
                 return 'Add student', name, surname, self.students[(str(id_student), name, surname)]
 
     def deleteStudent(self, id_student, name_student, surname_student):
-        keys = [*self.students]
-        if keys.__contains__((str(id_student), name_student, surname_student)):
+        if self.keys.__contains__((str(id_student), name_student, surname_student)):
             self.students.pop((str(id_student), name_student, surname_student))
             return list(self.students)
         else:
             raise Exception("There_is_not_such_student")
 
     def editStudent(self, id_student, name_student, surname_student, new_name, new_surname):
-        keys = [*self.students]
         if type(new_name) != str or type(new_surname) != str:
             raise TypeError("Bad_type_newName_or_newSurname")
         else:
-            if keys.__contains__((str(id_student), name_student, surname_student)):
+            if self.keys.__contains__((str(id_student), name_student, surname_student)):
                 self.students[(str(id_student), new_name, new_surname)] = self.students.pop(
                     (str(id_student), name_student, surname_student))
                 return list(filter(lambda x: x == (str(id_student), new_name, new_surname), list(self.students)))
