@@ -12,6 +12,5 @@ class SubjectsAssertPyTest(unittest.TestCase):
         assert_that(self.temp.addMark) \
             .raises(TypeError).when_called_with(5, "Piotr", "Fantazja", "math", "test", "1")
 
-
     def tearDown(self):
         self.temp = None
