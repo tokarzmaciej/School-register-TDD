@@ -2,7 +2,7 @@ class Students:
     def __init__(self):
         self.students = {
             ("1", "Kasia", "Polak"): {
-                "subject": {
+                "subjects": {
 
                 },
                 "remarks": {
@@ -10,7 +10,7 @@ class Students:
                 }
             },
             ("2", "Beata", "Jankowska"): {
-                "subject": {
+                "subjects": {
 
                 },
                 "remarks": {
@@ -18,7 +18,7 @@ class Students:
                 }
             },
             ("3", "Kacper", "Stoch"): {
-                "subject": {
+                "subjects": {
 
                 },
                 "remarks": {
@@ -26,7 +26,7 @@ class Students:
                 }
             },
             ("4", "Alicja", "Zielonka"): {
-                "subject": {
+                "subjects": {
                     "match": {
 
                     },
@@ -39,7 +39,7 @@ class Students:
                 }
             },
             ("5", "Piotr", "Fantazja"): {
-                "subject": {
+                "subjects": {
                     "match": {
 
                     },
@@ -55,7 +55,7 @@ class Students:
                 }
             },
             ("6", "Michal", "Krakowiak"): {
-                "subject": {
+                "subjects": {
                     "match": {
                         "activity1": 5,
                         "test_addition": 4,
@@ -78,13 +78,13 @@ class Students:
                 }
             },
             ("7", "Ewelina", "Swoboda"): {
-                "subject": {
+                "subjects": {
                     "physics": {
                         "test_planets": 5,
                         "activity1": 4,
                         "quiz": 2,
                     },
-                    "geogrphy": {
+                    "geography": {
                         "exam": 4,
                         "test_map": 4,
                         "activity1": 5,
@@ -95,8 +95,8 @@ class Students:
                     "competition": "first place"
                 }
             },
-            ("8", "Kondrad", "Piasek"): {
-                "subject": {
+            ("8", "Konrad", "Piasek"): {
+                "subjects": {
                 },
                 "remarks": {
                     "disturbing_lesson": "talking during classes",
