@@ -3,10 +3,14 @@ from assertpy import assert_that
 from src.remark import Remarks
 
 
-class RemarksAddAssertPyTest(unittest.TestCase):
+class RemarksEditAssertPyTest(unittest.TestCase):
 
     def setUp(self):
         self.temp = Remarks()
+
+    def test_edit_remark_name_positive(self):
+        assert_that(self.temp.editRemarkName(8, "Kondrad", "Piasek", "disturbing_lesson", "disturbing_math_lesson")[1]) \
+            .ends_with("math_lesson")
 
     def test_edit_remark_description_positive(self):
         assert_that(self.temp.editRemarkDescription(7, "Ewelina", "Swoboda", "competition", "second_place")) \

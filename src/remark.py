@@ -25,3 +25,5 @@ class Remarks(Students):
                 raise Exception("Student_not_have_this_remark")
         else:
             raise Exception("There_is_not_such_student")
+    def editRemarkName(self, id, name_student, surname_student, name_remark, new_name_remark):
+        return ""
