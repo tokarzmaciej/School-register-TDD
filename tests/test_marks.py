@@ -8,6 +8,10 @@ class MarksAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Marks()
 
+    def test_edit_mark_lack_student(self):
+        assert_that(self.temp.editMark) \
+            .raises(Exception).when_called_with(10, "Ewa", "Piech", "english", "quiz", 5)
+
     def test_edit_mark_grade_bad_type(self):
         assert_that(self.temp.editMark) \
             .raises(TypeError).when_called_with(7, "Ewelina", "Swoboda", "physics", "quiz", False)
