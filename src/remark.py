@@ -26,4 +26,6 @@ class Remarks(Students):
         else:
             raise Exception("There_is_not_such_student")
     def editRemarkName(self, id, name_student, surname_student, name_remark, new_name_remark):
-        return ""
+            self.students[(str(id), name_student, surname_student)]["remarks"][new_name_remark] = \
+                self.students[(str(id), name_student, surname_student)]["remarks"].pop(name_remark)
+            return [*self.students[(str(id), name_student, surname_student)]["remarks"]]
