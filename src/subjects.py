@@ -26,3 +26,5 @@ class Subjects(Students):
                     raise Exception("Student_not_have_this_subject")
             else:
                 raise Exception("There_is_not_such_student")
+    def editSubject(self, id, name_student, surname_student, name_subject, new_name_subject):
+        return ""
