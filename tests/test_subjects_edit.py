@@ -8,6 +8,10 @@ class SubjectsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_edit_subject_to_lack_subjects(self):
+        assert_that(self.temp.editSubject) \
+            .raises(Exception).when_called_with(4, "Alicja", "Zielonka", "history", "world-history")
+
     def test_edit_subject_to_lack_student(self):
         assert_that(self.temp.editSubject) \
             .raises(Exception).when_called_with(2, "Grzegorz", "Kowalczyk", "english", "primary_english")
