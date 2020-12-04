@@ -14,3 +14,6 @@ class Subjects(Students):
                 return self.students[(str(id), name_student, surname_student)]
             else:
                 raise Exception("There_is_not_such_student")
+
+    def deleteSubject(self, id, name_student, surname_student, name_subject):
+        return ""
