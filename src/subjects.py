@@ -27,4 +27,4 @@ class Subjects(Students):
             else:
                 raise Exception("There_is_not_such_student")
     def editSubject(self, id, name_student, surname_student, name_subject, new_name_subject):
-        return ""
+        raise TypeError("Bad_type_new_subject_name")
