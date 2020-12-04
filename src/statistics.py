@@ -11,6 +11,8 @@ class Statistics(Students):
                 valuesSubject = keysSubjects[name_subject].values()
                 if valuesSubject:
                     return "average" + " " + name_subject, sum(valuesSubject) / len(valuesSubject)
+                else:
+                    raise Exception("Do_not_have_marks")
             else:
                 raise Exception("Student_not_have_this_subject")
         else:
