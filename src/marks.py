@@ -28,7 +28,10 @@ class Marks(Students):
         else:
             if self.keys.__contains__((str(id), name_student, surname_student)):
                 valueSubjects = self.students[(str(id), name_student, surname_student)]["subjects"]
-                if not [*valueSubjects].__contains__(name_subject):
+                if [*valueSubjects].__contains__(name_subject):
+                    if not [*self.students[(str(id), name_student, surname_student)]["subjects"][name_subject]].__contains__(name_mark):
+                        raise Exception("There_is_not_such_mark")
+                else:
                     raise Exception("Student_not_have_this_subject")
             else:
                 raise Exception("There_is_not_such_student")
