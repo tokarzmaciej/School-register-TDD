@@ -8,3 +8,5 @@ class Marks(Students):
             raise TypeError("Bad_type_grade")
         elif grade > 6 or grade < 1:
             raise Exception("Bad_range_marks")
+        else:
+            raise Exception("There_is_not_such_student")
