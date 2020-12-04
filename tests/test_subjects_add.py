@@ -8,6 +8,11 @@ class SubjectsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_add_subjects_positive(self):
+        result = {'subjects': {"english": {}}, 'remarks': {}}
+        assert_that(self.temp.addSubject(2, "Beata", "Jankowska", "english")) \
+            .is_equal_to(result)
+
     def test_add_subject_to_lack_student(self):
         assert_that(self.temp.addSubject) \
             .raises(Exception).when_called_with(12, "Zosia", "Kucharska", "math")
