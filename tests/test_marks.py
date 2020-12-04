@@ -8,6 +8,10 @@ class MarksAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Marks()
 
+    def test_edit_mark_positive(self):
+        assert_that(self.temp.editMark(7, "Ewelina", "Swoboda", "physics", "quiz", 4)) \
+            .contains(('quiz', 4))
+
     def test_edit_mark_lack_mark(self):
         assert_that(self.temp.editMark) \
             .raises(Exception).when_called_with(6, "Michal", "Krakowiak", "math", "exam", 3)
