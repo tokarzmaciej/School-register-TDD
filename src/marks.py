@@ -26,4 +26,7 @@ class Marks(Students):
         if type(grade) != int:
             raise TypeError("Bad_type_grade")
         else:
-            raise Exception("There_is_not_such_student")
+            if not self.keys.__contains__((str(id), name_student, surname_student)):
+                raise Exception("There_is_not_such_student")
+
+
