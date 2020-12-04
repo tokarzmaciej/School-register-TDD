@@ -17,4 +17,5 @@ class Subjects(Students):
     def deleteSubject(self, id, name_student, surname_student, name_subject):
         if not self.keys.__contains__((str(id), name_student, surname_student)):
             raise Exception("There_is_not_such_student")
-
+        elif type(name_subject) != str:
+            raise TypeError("Bad_type_subject_name")
