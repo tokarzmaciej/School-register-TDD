@@ -12,8 +12,6 @@ class Marks(Students):
             if self.keys.__contains__((str(id), name_student, surname_student)):
                 if [*self.students[(str(id), name_student, surname_student)]["subjects"]].__contains__(
                         name_subject):
-                    raise Exception("This_mark_already_exists")
-                else:
                     raise Exception("Student_not_have_this_subject")
             else:
                 raise Exception("There_is_not_such_student")
