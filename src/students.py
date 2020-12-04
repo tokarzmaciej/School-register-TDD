@@ -27,7 +27,7 @@ class Students:
             },
             ("4", "Alicja", "Zielonka"): {
                 "subjects": {
-                    "match": {
+                    "math": {
 
                     },
                     "english": {
@@ -40,7 +40,7 @@ class Students:
             },
             ("5", "Piotr", "Fantazja"): {
                 "subjects": {
-                    "match": {
+                    "math": {
 
                     },
                     "history": {
@@ -56,7 +56,7 @@ class Students:
             },
             ("6", "Michal", "Krakowiak"): {
                 "subjects": {
-                    "match": {
+                    "math": {
                         "activity1": 5,
                         "test_addition": 4,
                         "quiz": 6,
