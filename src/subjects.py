@@ -37,3 +37,8 @@ class Subjects(Students):
                 if not [*self.students[(str(id), name_student, surname_student)]["subjects"]].__contains__(
                         name_subject):
                     raise Exception("Student_not_have_this_subject")
+                else:
+                    self.students[(str(id), name_student, surname_student)]["subjects"][new_name_subject] = \
+                        self.students[(str(id), name_student, surname_student)]["subjects"].pop(name_subject)
+                    return [*self.students[(str(id), name_student, surname_student)]["subjects"]]
+
