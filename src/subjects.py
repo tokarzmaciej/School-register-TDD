@@ -16,4 +16,4 @@ class Subjects(Students):
                 raise Exception("There_is_not_such_student")
 
     def deleteSubject(self, id, name_student, surname_student, name_subject):
-        return ""
+        raise TypeError("Bad_type_subject_name")
