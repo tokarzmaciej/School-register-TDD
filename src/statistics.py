@@ -4,14 +4,13 @@ from src.students import *
 class Statistics(Students):
 
     def averageSubject(self, id, name_student, surname_student, name_subject):
-        keys = [*self.students]
-        if keys.__contains__((str(id), name_student, surname_student)):
-            if [*self.students[(str(id), name_student, surname_student)]["subjects"]].__contains__(
+        if self.keys.__contains__((str(id), name_student, surname_student)):
+            keysSubjects = self.students[(str(id), name_student, surname_student)]["subjects"]
+            if [*keysSubjects].__contains__(
                     name_subject):
-
-                values = self.students[(str(id), name_student, surname_student)]["subjects"][name_subject].values()
-                if values:
-                    return "average" + " " + name_subject, sum(values) / len(values)
+                valuesSubject = keysSubjects[name_subject].values()
+                if valuesSubject:
+                    return "average" + " " + name_subject, sum(valuesSubject) / len(valuesSubject)
             else:
                 raise Exception("Student_not_have_this_subject")
         else:
