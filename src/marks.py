@@ -9,4 +9,5 @@ class Marks(Students):
         elif grade > 6 or grade < 1:
             raise Exception("Bad_range_marks")
         else:
-            raise Exception("There_is_not_such_student")
+            if not self.keys.__contains__((str(id), name_student, surname_student)):
+                raise Exception("There_is_not_such_student")
