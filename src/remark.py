@@ -21,5 +21,7 @@ class Remarks(Students):
                     name_remark):
                 self.students[(str(id), name_student, surname_student)]["remarks"][name_remark] = new_description_remark
                 return self.students[(str(id), name_student, surname_student)]["remarks"][name_remark]
+            else:
+                raise Exception("Student_not_have_this_remark")
         else:
             raise Exception("There_is_not_such_student")
