@@ -15,4 +15,5 @@ class Remarks(Students):
             raise Exception("There_is_not_such_student")
 
     def editRemarkDescription(self, id, name_student, surname_student, name_remark, new_description_remark):
-        raise Exception("There_is_not_such_student")
+        if not self.keys.__contains__((str(id), name_student, surname_student)):
+            raise Exception("There_is_not_such_student")
