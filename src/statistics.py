@@ -3,11 +3,10 @@ from src.students import *
 
 class Statistics(Students):
 
-    def averageSubject(self, id, name_student, surname_student, name_subject):
-        if self.keys.__contains__((str(id), name_student, surname_student)):
-            keysSubjects = self.students[(str(id), name_student, surname_student)]["subjects"]
-            if [*keysSubjects].__contains__(
-                    name_subject):
+    def averageSubject(self, id_student, name_student, surname_student, name_subject):
+        if self.keys.__contains__((str(id_student), name_student, surname_student)):
+            keysSubjects = self.students[(str(id_student), name_student, surname_student)]["subjects"]
+            if [*keysSubjects].__contains__(name_subject):
                 valuesSubject = keysSubjects[name_subject].values()
                 if valuesSubject:
                     return "average" + " " + name_subject, sum(valuesSubject) / len(valuesSubject)
