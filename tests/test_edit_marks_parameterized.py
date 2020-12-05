@@ -23,6 +23,12 @@ class MarksEditParameterizedPackage(unittest.TestCase):
         self.assertRaisesRegex(Exception, expected, self.tmp.editMark, id, name, surname, name_subject, name_mark,
                                grade)
 
+    @parameterized.expand([
+        (7, "Ewelina", "Swoboda", "physics", "quiz", False, "Bad_type_grade"),
+    ])
+    def test_edit_mark_type_errors_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.editMark, id, name, surname, name_subject, name_mark, grade)
+
 
 if __name__ == '__main__':
     unittest.main()
