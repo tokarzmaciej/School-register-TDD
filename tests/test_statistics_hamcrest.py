@@ -7,6 +7,11 @@ class AverageHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Statistics()
 
+    def test_average_subjects_lack_student(self):
+        assert_that(calling(self.temp.averageSubjects)
+                    .with_args(21, "Piotr", "Lewandowski"),
+                    raises(Exception))
+
     def test_edit_remark_name_positive(self):
         assert_that(
             self.temp.averageSubject(6, "Michal", "Krakowiak", "math")[1],
