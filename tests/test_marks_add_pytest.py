@@ -1,17 +1,32 @@
 import pytest
-from src.remark import Remarks
+from src.marks import Marks
 
 
-def test_add_remark_positive():
-    result = {'volunteering': 'cleaning_the_environment'}
-    assert Remarks().addRemark(2, "Beata", "Jankowska", "volunteering", "cleaning_the_environment") == result
+def test_add_mark_positive():
+    result = ('test', 2)
+    assert Marks().addMark(4, "Alicja", "Zielonka", "math", "test", 2)[0] == result
 
 
-def test_add_remark_already_exists():
+def test_add_mark_mark_already_exists():
     with pytest.raises(Exception):
-        Remarks().addRemark(8, "Konrad", "Piasek", "competition", "first place")
+        Marks().addMark(6, "Michal", "Krakowiak", "art", "singing_hymn", 3)
 
 
-def test_add_remark_lack_student():
+def test_add_mark_lack_subjects():
     with pytest.raises(Exception):
-        Remarks().addRemark(10, "Gosia", "Rosa", "help", "preparing_appeal")
+        Marks().addMark(3, "Kacper", "Stoch", "geography", "activity", 5)
+
+
+def test_add_mark_lack_student():
+    with pytest.raises(Exception):
+        Marks().addMark(11, "Robert", "Perkoz", "english", "test-present-simple", 3)
+
+
+def test_add_mark_range_mark():
+    with pytest.raises(Exception):
+        Marks().addMark(4, "Alicja", "Zielonka", "math", "test", 7)
+
+
+def test_add_mark_name_bad_type():
+    with pytest.raises(Exception):
+        Marks().addMark(5, "Piotr", "Fantazja", "math", "test", "1")
