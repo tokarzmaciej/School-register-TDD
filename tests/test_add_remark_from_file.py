@@ -11,10 +11,23 @@ class RemarkAddParameterizedFile(unittest.TestCase):
                 continue
             else:
                 data = line.split(" ")
-                inp1, inp2, inp3, inp4, inp5, inp6, imp7 = (
+                inp1, inp2, inp3, inp4, inp5, inp6, inp7 = (
                     data[0], data[1], data[2], data[3], data[4], data[5], data[6].strip("\n"))
-                self.assertEqual({'volunteering': 'cleaning_the_environment'},
+                self.assertEqual({inp6: inp7},
                                  tmp.addRemark(inp1, inp2, inp3, inp4, inp5))
+        fileTest.close()
+
+    def test_add_remark_exceptions_from_file(self):
+        fileTest = open("data/test_add_remark_exceptions.txt")
+        tmp = Remarks()
+        for line in fileTest:
+            if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
+                continue
+            else:
+                data = line.split(" ")
+                inp1, inp2, inp3, inp4, inp5, inp6 = (
+                    data[0], data[1], data[2], data[3], data[4], data[5].strip("\n"))
+                self.assertRaisesRegex(Exception, inp6, tmp.addRemark, inp1, inp2, inp3, inp4, inp5)
         fileTest.close()
 
 
