@@ -7,6 +7,10 @@ class SubjectsEditHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_edit_subject_positive(self):
+        assert_that(self.temp.editSubject(6, "Michal", "Krakowiak", "art", "history_art"),
+                    has_item('history_art'))
+
     def test_edit_subject_to_lack_subjects(self):
         assert_that(calling(self.temp.editSubject)
                     .with_args(4, "Alicja", "Zielonka", "history", "world-history"),
