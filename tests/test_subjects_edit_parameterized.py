@@ -53,6 +53,17 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editSubject, self.id, self.name, self.surname,
                                    self.name_subject, self.new_name_subject)
 
+    @parameterized_class(("id", "name", "surname", "name_subject","new_name_subject", "expected"), [
+        (5, "Piotr", "Fantazja", "history", False, "Bad_type_new_subject_name"),
+    ])
+    class SubjectsEditTypeErrorsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Subjects()
+
+        def test_edit_subjects_type_errors_class(self):
+            self.assertRaisesRegex(TypeError, self.expected, self.tmp.editSubject, self.id, self.name, self.surname,
+                                   self.name_subject,self.new_name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
