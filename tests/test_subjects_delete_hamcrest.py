@@ -3,7 +3,7 @@ from hamcrest import *
 from src.subjects import Subjects
 
 
-class StudentsHamcrestTest(unittest.TestCase):
+class SubjectsDeleteHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
