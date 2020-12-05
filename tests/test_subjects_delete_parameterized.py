@@ -38,6 +38,18 @@ class SubjectsDeleteParameterizedPackage(unittest.TestCase):
         def test_delete_subjects_positive_class(self):
             self.assertEqual(self.tmp.deleteSubject(self.id, self.name, self.surname, self.name_subject), self.expected)
 
+    @parameterized_class(("id", "name", "surname", "name_subject", "expected"), [
+        (10, "Ania", "Zegan", "english", "There_is_not_such_student"),
+        (5, "Piotr", "Fantazja", "geography", "Student_not_have_this_subject")
+    ])
+    class SubjectsDeleteExceptionsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Subjects()
+
+        def test_delete_subjects_exceptions_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.deleteSubject, self.id, self.name, self.surname,
+                                   self.name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
