@@ -8,6 +8,10 @@ class StatisticsAssertPyTest(unittest.TestCase):
     def setUp(self):
         self.temp = Statistics()
 
+    def test_average_subjects_positive(self):
+        assert_that(self.temp.averageSubjects(7, "Ewelina", "Swoboda")[1]) \
+            .is_less_than_or_equal_to(4)
+
     def test_average_subjects_lack_marks(self):
         assert_that(self.temp.averageSubjects) \
             .raises(Exception).when_called_with(4, "Alicja", "Zielonka")
