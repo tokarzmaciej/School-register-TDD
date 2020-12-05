@@ -23,6 +23,11 @@ class MarksAddParameterizedPackage(unittest.TestCase):
     def test_add_mark_exceptions_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
         self.assertRaisesRegex(Exception, expected, self.tmp.addMark, id, name, surname, name_subject, name_mark, grade)
 
+    @parameterized.expand([
+        (5, "Piotr", "Fantazja", "math", "test", "1","Bad_type_grade"),
+    ])
+    def test_add_mark_type_errors_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.addMark, id, name, surname, name_subject, name_mark, grade)
 
 if __name__ == '__main__':
     unittest.main()
