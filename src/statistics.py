@@ -16,3 +16,6 @@ class Statistics(Students):
                 raise Exception("Student_not_have_this_subject")
         else:
             raise Exception("There_is_not_such_student")
+
+    def averageSubjects(self, id, name_student, surname_student):
+        raise Exception("There_is_not_such_student")
