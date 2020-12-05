@@ -20,6 +20,23 @@ class RemarksEditParameterizedPackage(unittest.TestCase):
     def test_edit_remark_description_expand(self, id, name, surname, name_remark, new_description_remark, expected):
         self.assertIn(expected, self.tmp.editRemarkDescription(id, name, surname, name_remark, new_description_remark))
 
+    @parameterized.expand([
+        (1, "Kasia", "Polak", "volunteering", "helping","Student_not_have_this_remark"),
+        (15, "Wiktor", "Nowak", "competition", "football_competition","There_is_not_such_student")
+    ])
+    def test_edit_remark_name_exceptions_expand(self, id, name, surname, name_remark, new_name_remark, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.editRemarkName, id, name, surname, name_remark,
+                               new_name_remark)
+
+    @parameterized.expand([
+        (3, "Kacper", "Stoch", "volunteering", "helping_an_elderly_person", "Student_not_have_this_remark"),
+        (14, "Julka", "Ostrowska", "competition", "first_place", "There_is_not_such_student")
+    ])
+    def test_edit_remark_description_exceptions_expand(self, id, name, surname, name_remark, new_description_remark,
+                                                       expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.editRemarkDescription, id, name, surname, name_remark,
+                               new_description_remark)
+
 
 if __name__ == '__main__':
     unittest.main()
