@@ -22,5 +22,7 @@ class Statistics(Students):
             values = list(self.students[(str(id), name_student, surname_student)]["subjects"].values())
             if not values:
                 raise Exception("Do_not_have_subjects")
+            else:
+                raise Exception("Do_not_have_marks")
         else:
             raise Exception("There_is_not_such_student")
