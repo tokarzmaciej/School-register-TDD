@@ -28,5 +28,5 @@ def test_add_mark_range_mark():
 
 
 def test_add_mark_name_bad_type():
-    with pytest.raises(Exception):
+    with pytest.raises(TypeError):
         Marks().addMark(5, "Piotr", "Fantazja", "math", "test", "1")
