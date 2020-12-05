@@ -27,7 +27,20 @@ class MarksEditParameterizedPackage(unittest.TestCase):
         (7, "Ewelina", "Swoboda", "physics", "quiz", False, "Bad_type_grade"),
     ])
     def test_edit_mark_type_errors_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
-        self.assertRaisesRegex(TypeError, expected, self.tmp.editMark, id, name, surname, name_subject, name_mark, grade)
+        self.assertRaisesRegex(TypeError, expected, self.tmp.editMark, id, name, surname, name_subject, name_mark,
+                               grade)
+
+    @parameterized_class(("id", "name", "surname", "name_subject", "new_mark", "grade", "expected"), [
+        (7, "Ewelina", "Swoboda", "physics", "quiz", 4, ('quiz', 4)),
+
+    ])
+    class MarksEditParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Marks()
+
+        def test_add_mark_positive_class(self):
+            self.assertIn(self.expected, self.tmp.editMark(self.id, self.name, self.surname, self.name_subject,
+                                                           self.new_mark, self.grade))
 
 
 if __name__ == '__main__':
