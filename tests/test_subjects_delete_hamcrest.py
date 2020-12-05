@@ -7,6 +7,11 @@ class StudentsHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_delete_subject_to_lack_subject(self):
+        assert_that(calling(self.temp.deleteSubject)
+                    .with_args(5, "Piotr", "Fantazja", "geography"),
+                    raises(Exception))
+
     def test_delete_subject_to_lack_student(self):
         assert_that(calling(self.temp.deleteSubject)
                     .with_args(10, "Ania", "Zegan", "english"),
