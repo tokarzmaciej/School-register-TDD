@@ -14,6 +14,13 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
     def test_edit_subjects_positive_expand(self, id, name, surname, name_subject, new_name_subject, expected):
         self.assertIn(expected, self.tmp.editSubject(id, name, surname, name_subject, new_name_subject))
 
+    @parameterized.expand([
+        (2, "Grzegorz", "Kowalczyk", "english", "primary_english", "There_is_not_such_student"),
+        (4, "Alicja", "Zielonka", "history", "world-history", "Student_not_have_this_subject")
+    ])
+    def test_edit_subjects_exceptions_expand(self, id, name, surname, name_subject,new_name_subject, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.editSubject, id, name, surname, name_subject,new_name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
