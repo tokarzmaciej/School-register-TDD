@@ -17,9 +17,9 @@ class Statistics(Students):
         else:
             raise Exception("There_is_not_such_student")
 
-    def averageSubjects(self, id, name_student, surname_student):
-        if self.keys.__contains__((str(id), name_student, surname_student)):
-            values = list(self.students[(str(id), name_student, surname_student)]["subjects"].values())
+    def averageSubjects(self, id_student, name_student, surname_student):
+        if self.keys.__contains__((str(id_student), name_student, surname_student)):
+            values = list(self.students[(str(id_student), name_student, surname_student)]["subjects"].values())
             if not values:
                 raise Exception("Do_not_have_subjects")
             else:
@@ -30,7 +30,8 @@ class Statistics(Students):
                     raise Exception("Do_not_have_marks")
                 else:
                     for i in range(len(values)):
-                        values[i] = sum(list(values[i].values())) / len(list(values[i].values()))
+                        marksWithSubject = list(values[i].values())
+                        values[i] = sum(marksWithSubject) / len(marksWithSubject)
                     return "average", sum(values) / len(values)
         else:
             raise Exception("There_is_not_such_student")
