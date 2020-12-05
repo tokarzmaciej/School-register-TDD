@@ -1,0 +1,5 @@
+#This is a comment
+
+4 Alicja Zielonka Do_not_have_marks
+3 Kacper Stoch Do_not_have_subjects
+21 Piotr Lewandowski There_is_not_such_student

@@ -1,0 +1,5 @@
+#This is a comment
+
+5 Piotr Fantazja art Do_not_have_marks
+4 Alicja Zielonka history Student_not_have_this_subject
+21 Zosia Borkowska math There_is_not_such_student
