@@ -2,3 +2,4 @@ pyhamcrest
 parameterized
 coverage
 assertpy
+pytest
