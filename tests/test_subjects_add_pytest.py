@@ -13,5 +13,5 @@ def test_add_subject_to_lack_student():
 
 
 def test_add_subject_name_subject_bad_type():
-    with pytest.raises(Exception):
+    with pytest.raises(TypeError):
         Subjects().addSubject(2, "Beata", "Jankowska", True)
