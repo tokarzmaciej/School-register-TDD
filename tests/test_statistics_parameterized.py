@@ -36,6 +36,27 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     def test_average_subject_exceptions_expand(self, id, name, surname, name_subject, expected):
         self.assertRaisesRegex(Exception, expected, self.tmp.averageSubject, id, name, surname, name_subject)
 
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (7, "Ewelina", "Swoboda", 4)
+    ])
+    class StatisticsSubjectsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Statistics()
+
+        def test_average_subjects_class(self):
+            self.assertLessEqual(self.expected, self.tmp.averageSubjects(self.id, self.name, self.surname)[1])
+
+    @parameterized_class(("id", "name", "surname", "name_subject", "expected"), [
+        (6, "Michal", "Krakowiak", "math", 5)
+    ])
+    class StatisticsSubjectsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Statistics()
+
+        def test_average_subject_class(self):
+            self.assertGreaterEqual(self.expected,
+                                    self.tmp.averageSubject(self.id, self.name, self.surname, self.name_subject)[1])
+
 
 if __name__ == '__main__':
     unittest.main()
