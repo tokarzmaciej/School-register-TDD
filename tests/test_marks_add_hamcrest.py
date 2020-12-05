@@ -7,6 +7,11 @@ class MarksAddHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Marks()
 
+    def test_add_mark_mark_already_exists(self):
+        assert_that(calling(self.temp.addMark)
+                    .with_args(6, "Michal", "Krakowiak", "art", "singing_hymn", 3),
+                    raises(Exception))
+
     def test_add_mark_lack_subjects(self):
         assert_that(calling(self.temp.addMark)
                     .with_args(3, "Kacper", "Stoch", "geography", "activity", 5),
