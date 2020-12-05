@@ -38,7 +38,7 @@ class MarksEditParameterizedPackage(unittest.TestCase):
         def setUp(self):
             self.tmp = Marks()
 
-        def test_add_mark_positive_class(self):
+        def test_edit_mark_positive_class(self):
             self.assertIn(self.expected, self.tmp.editMark(self.id, self.name, self.surname, self.name_subject,
                                                            self.new_mark, self.grade))
 
@@ -51,8 +51,19 @@ class MarksEditParameterizedPackage(unittest.TestCase):
         def setUp(self):
             self.tmp = Marks()
 
-        def test_add_mark_exceptions_class(self):
+        def test_edit_mark_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editMark, self.id, self.name, self.surname,
+                                   self.name_subject, self.new_mark, self.grade)
+
+    @parameterized_class(("id", "name", "surname", "name_subject", "new_mark", "grade", "expected"), [
+        (7, "Ewelina", "Swoboda", "physics", "quiz", False, "Bad_type_grade"),
+    ])
+    class MarksEditTypeErrorsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Marks()
+
+        def test_edit_mark_type_errors_class(self):
+            self.assertRaisesRegex(TypeError, self.expected, self.tmp.editMark, self.id, self.name, self.surname,
                                    self.name_subject, self.new_mark, self.grade)
 
 
