@@ -49,13 +49,38 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     @parameterized_class(("id", "name", "surname", "name_subject", "expected"), [
         (6, "Michal", "Krakowiak", "math", 5)
     ])
-    class StatisticsSubjectsParameterizedPackageClass(unittest.TestCase):
+    class StatisticsSubjectParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
             self.tmp = Statistics()
 
         def test_average_subject_class(self):
             self.assertGreaterEqual(self.expected,
                                     self.tmp.averageSubject(self.id, self.name, self.surname, self.name_subject)[1])
+
+    @parameterized_class(("id", "name", "surname", "expected"), [
+        (4, "Alicja", "Zielonka", "Do_not_have_marks"),
+        (3, "Kacper", "Stoch", "Do_not_have_subjects"),
+        (21, "Piotr", "Lewandowski", "There_is_not_such_student")
+    ])
+    class StatisticsSubjectsExceptionsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Statistics()
+
+        def test_average_subjects_exceptions_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.averageSubjects, self.id, self.name, self.surname)
+
+    @parameterized_class(("id", "name", "surname", "name_subject", "expected"), [
+        (5, "Piotr", "Fantazja", "art", "Do_not_have_marks"),
+        (4, "Alicja", "Zielonka", "history", "Student_not_have_this_subject"),
+        (21, "Zosia", "Borkowska", "math", "There_is_not_such_student")
+    ])
+    class StatisticsSubjectExceptionsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Statistics()
+
+        def test_average_subject_exceptions_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.averageSubject, self.id, self.name, self.surname,
+                                   self.name_subject)
 
 
 if __name__ == '__main__':
