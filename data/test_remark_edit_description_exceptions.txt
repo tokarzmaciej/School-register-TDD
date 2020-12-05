@@ -1,0 +1,4 @@
+#This is a comment
+
+3 Kacper Stoch volunteering helping_an_elderly_person Student_not_have_this_remark
+14 Julka Ostrowska competition first_place There_is_not_such_student
