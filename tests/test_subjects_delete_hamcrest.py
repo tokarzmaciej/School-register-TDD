@@ -7,6 +7,10 @@ class StudentsHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_delete_subject_positive(self):
+        result = {'subjects': {'history': {}, 'art': {}}, 'remarks': {}}
+        assert_that(self.temp.deleteSubject(5, "Piotr", "Fantazja", "math"), equal_to(result))
+
     def test_delete_subject_to_lack_subject(self):
         assert_that(calling(self.temp.deleteSubject)
                     .with_args(5, "Piotr", "Fantazja", "geography"),
