@@ -28,5 +28,9 @@ class Statistics(Students):
                         values.remove(dictionary)
                 if not values:
                     raise Exception("Do_not_have_marks")
+                else:
+                    for i in range(len(values)):
+                        values[i] = sum(list(values[i].values())) / len(list(values[i].values()))
+                    return "average", sum(values) / len(values)
         else:
             raise Exception("There_is_not_such_student")
