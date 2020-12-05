@@ -41,6 +41,18 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
             self.assertIn(self.expected, self.tmp.editSubject(self.id, self.name, self.surname, self.name_subject,
                                                               self.new_name_subject))
 
+    @parameterized_class(("id", "name", "surname", "name_subject", "new_name_subject", "expected"), [
+        (2, "Grzegorz", "Kowalczyk", "english", "primary_english", "There_is_not_such_student"),
+        (4, "Alicja", "Zielonka", "history", "world-history", "Student_not_have_this_subject")
+    ])
+    class SubjectsEditExceptionsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Subjects()
+
+        def test_edit_subjects_exceptions_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.editSubject, self.id, self.name, self.surname,
+                                   self.name_subject, self.new_name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
