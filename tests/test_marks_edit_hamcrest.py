@@ -7,6 +7,10 @@ class MarksEditHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Marks()
 
+    def test_edit_mark_positive(self):
+        assert_that(self.temp.editMark(7, "Ewelina", "Swoboda", "physics", "quiz", 4),
+                    has_item(('quiz', 4)))
+
     def test_edit_mark_lack_mark(self):
         assert_that(calling(self.temp.editMark)
                     .with_args(6, "Michal", "Krakowiak", "math", "exam", 3),
