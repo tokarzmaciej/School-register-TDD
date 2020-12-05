@@ -7,6 +7,11 @@ class SubjectsEditHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Subjects()
 
+    def test_edit_subject_to_lack_subjects(self):
+        assert_that(calling(self.temp.editSubject)
+                    .with_args(4, "Alicja", "Zielonka", "history", "world-history"),
+                    raises(Exception))
+
     def test_edit_subject_to_lack_student(self):
         assert_that(calling(self.temp.editSubject)
                     .with_args(2, "Grzegorz", "Kowalczyk", "english", "primary_english"),
