@@ -15,6 +15,12 @@ class StudentsParameterizedPackage(unittest.TestCase):
     def test_add_subjects_positive_expand(self, id, name, surname, name_subject, expected):
         self.assertEqual(self.tmp.addSubject(id, name, surname, name_subject), expected)
 
+    @parameterized.expand([
+        (12, "Zosia", "Kucharska", "math","There_is_not_such_student"),
+    ])
+    def test_add_subjects_exceptions_expand(self, id, name, surname, name_subject, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.addSubject, id, name, surname,name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
