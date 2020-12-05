@@ -7,6 +7,11 @@ class RemarksAddHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Remarks()
 
+    def test_add_remark_positive(self):
+        result = {'volunteering': 'cleaning_the_environment'}
+        assert_that(self.temp.addRemark(2, "Beata", "Jankowska", "volunteering", "cleaning_the_environment"),
+                    equal_to(result))
+
     def test_add_remark_already_exists(self):
         assert_that(calling(self.temp.addRemark)
                     .with_args(8, "Konrad", "Piasek", "competition", "first place"),
