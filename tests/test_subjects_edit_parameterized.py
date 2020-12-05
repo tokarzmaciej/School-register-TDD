@@ -25,7 +25,7 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
     @parameterized.expand([
         (5, "Piotr", "Fantazja", "history", False, "Bad_type_new_subject_name"),
     ])
-    def test_edit_subjects_type_errors(self, id, name, surname, name_subject, new_name_subject, expected):
+    def test_edit_subjects_type_errors_expand(self, id, name, surname, name_subject, new_name_subject, expected):
         self.assertRaisesRegex(TypeError, expected, self.tmp.editSubject, id, name, surname, name_subject,
                                new_name_subject)
 
