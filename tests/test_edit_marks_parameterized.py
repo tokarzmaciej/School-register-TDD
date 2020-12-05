@@ -42,6 +42,19 @@ class MarksEditParameterizedPackage(unittest.TestCase):
             self.assertIn(self.expected, self.tmp.editMark(self.id, self.name, self.surname, self.name_subject,
                                                            self.new_mark, self.grade))
 
+    @parameterized_class(("id", "name", "surname", "name_subject", "new_mark", "grade", "expected"), [
+        (10, "Ewa", "Piech", "english", "quiz", 5, "There_is_not_such_student"),
+        (4, "Alicja", "Zielonka", "history", "test", 3, "Student_not_have_this_subject"),
+        (6, "Michal", "Krakowiak", "math", "exam", 3, "There_is_not_such_mark")
+    ])
+    class MarksEditExceptionsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Marks()
+
+        def test_add_mark_exceptions_class(self):
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.editMark, self.id, self.name, self.surname,
+                                   self.name_subject, self.new_mark, self.grade)
+
 
 if __name__ == '__main__':
     unittest.main()
