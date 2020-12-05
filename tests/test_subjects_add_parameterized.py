@@ -1,10 +1,9 @@
 import unittest
-from key_generator.key_generator import generate
 from src.subjects import Subjects
 from parameterized import parameterized, parameterized_class
 
 
-class StudentsParameterizedPackage(unittest.TestCase):
+class SubjectsAddParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
         self.tmp = Subjects()
@@ -26,6 +25,17 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     def test_add_subjects_type_errors(self, id, name, surname, name_subject, expected):
         self.assertRaisesRegex(Exception, expected, self.tmp.addSubject, id, name, surname, name_subject)
+
+    @parameterized_class(("id", "name", "surname","name_subject", "expected"), [
+        (2, "Beata", "Jankowska", "english", {'subjects': {"english": {}}, 'remarks': {}}),
+
+    ])
+    class SubjectsAddParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Subjects()
+
+        def test_add_subjects_positive_class(self):
+            self.assertEqual(self.tmp.addSubject(self.id, self.name, self.surname, self.name_subject), self.expected)
 
 
 if __name__ == '__main__':
