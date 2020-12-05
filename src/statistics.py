@@ -23,6 +23,10 @@ class Statistics(Students):
             if not values:
                 raise Exception("Do_not_have_subjects")
             else:
-                raise Exception("Do_not_have_marks")
+                for dictionary in list(values):
+                    if not list(dictionary.values()):
+                        values.remove(dictionary)
+                if not values:
+                    raise Exception("Do_not_have_marks")
         else:
             raise Exception("There_is_not_such_student")
