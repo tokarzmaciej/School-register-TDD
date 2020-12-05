@@ -21,6 +21,12 @@ class SubjectsDeleteParameterizedPackage(unittest.TestCase):
     def test_delete_subjects_exceptions_expand(self, id, name, surname, name_subject, expected):
         self.assertRaisesRegex(Exception, expected, self.tmp.deleteSubject, id, name, surname, name_subject)
 
+    @parameterized.expand([
+        (5, "Piotr", "Fantazja", 1234, "Bad_type_subject_name"),
+    ])
+    def test_delete_subjects_type_errors(self, id, name, surname, name_subject, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.deleteSubject, id, name, surname, name_subject)
+
 
 if __name__ == '__main__':
     unittest.main()
