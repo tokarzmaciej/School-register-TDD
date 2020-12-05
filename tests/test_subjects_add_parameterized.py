@@ -45,7 +45,19 @@ class SubjectsAddParameterizedPackage(unittest.TestCase):
             self.tmp = Subjects()
 
         def test_add_subjects_exceptions_class(self):
-            self.assertRaisesRegex(Exception, self.expected, self.tmp.addSubject, self.id, self.name, self.surname, self.name_subject)
+            self.assertRaisesRegex(Exception, self.expected, self.tmp.addSubject, self.id, self.name, self.surname,
+                                   self.name_subject)
+
+    @parameterized_class(("id", "name", "surname", "name_subject", "expected"), [
+        (2, "Beata", "Jankowska", True, "Bad_type_subject_name"),
+    ])
+    class SubjectsAddTypeErrorsParameterizedPackageClass(unittest.TestCase):
+        def setUp(self):
+            self.tmp = Subjects()
+
+        def test_add_subjects_type_error_class(self):
+            self.assertRaisesRegex(TypeError, self.expected, self.tmp.addSubject, self.id, self.name, self.surname,
+                                   self.name_subject)
 
 
 if __name__ == '__main__':
