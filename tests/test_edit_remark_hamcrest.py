@@ -7,6 +7,11 @@ class RemarksEditHamcrestTest(unittest.TestCase):
     def setUp(self):
         self.temp = Remarks()
 
+    def test_edit_remark_name_lack_students(self):
+        assert_that(calling(self.temp.editRemarkName)
+                    .with_args(15, "Wiktor", "Nowak", "competition", "football_competition"),
+                    raises(Exception))
+
     def test_edit_remark_description_positive(self):
         assert_that(self.temp.editRemarkDescription(7, "Ewelina", "Swoboda", "competition", "second_place"),
                     starts_with("second"))
