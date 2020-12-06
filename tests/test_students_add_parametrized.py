@@ -12,21 +12,21 @@ class StudentsParameterizedPackage(unittest.TestCase):
     @parameterized.expand([
         (generate().get_key(), "Adam", "Nowak", ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})),
     ])
-    def test_student_add_expand(self, id, name, surname, expected):
-        self.assertEqual(self.tmp.addStudent(id, name, surname), expected)
+    def test_student_add_expand(self, id_student, name, surname, expected):
+        self.assertEqual(self.tmp.addStudent(id_student, name, surname), expected)
 
     @parameterized.expand([
         (2, "Beata", "Jankowska", "This_id_already_exists"),
     ])
-    def test_student_add_exceptions_expand(self, id, name, surname, expected):
-        self.assertRaisesRegex(Exception, expected, self.tmp.addStudent, id, name, surname)
+    def test_student_add_exceptions_expand(self, id_student, name, surname, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.addStudent, id_student, name, surname)
 
     @parameterized.expand([
         (generate().get_key(), "Jan", 2, "Bad_type_name_or_surname"),
         (generate().get_key(), True, "Kowalski", "Bad_type_name_or_surname")
     ])
-    def test_student_add_type_error_expand(self, id, name, surname, expected):
-        self.assertRaisesRegex(TypeError, expected, self.tmp.addStudent, id, name, surname)
+    def test_student_add_type_error_expand(self, id_student, name, surname, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.addStudent, id_student, name, surname)
 
     @parameterized_class(("id", "name", "surname", "expected"), [
         (generate().get_key(), "Adam", "Nowak", ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})),

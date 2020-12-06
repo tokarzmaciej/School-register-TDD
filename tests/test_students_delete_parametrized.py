@@ -11,14 +11,14 @@ class StudentsParameterizedPackage(unittest.TestCase):
     @parameterized.expand([
         (1, "Kasia", "Polak", ('1', 'Kasia', 'Polak')),
     ])
-    def test_student_delete_expand(self, id, name, surname, expected):
-        self.assertNotIn(self.tmp.deleteStudent(id, name, surname), expected)
+    def test_student_delete_expand(self, id_student, name, surname, expected):
+        self.assertNotIn(self.tmp.deleteStudent(id_student, name, surname), expected)
 
     @parameterized.expand([
         (3, "Kasia", "Polak", "There_is_not_such_student"),
     ])
-    def test_student_delete_exceptions_expand(self, id, name, surname, expected):
-        self.assertRaisesRegex(Exception, expected, self.tmp.deleteStudent, id, name, surname)
+    def test_student_delete_exceptions_expand(self, id_student, name, surname, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.deleteStudent, id_student, name, surname)
 
     @parameterized_class(("id", "name", "surname", "expected"), [
         (1, "Kasia", "Polak", ('1', 'Kasia', 'Polak')),

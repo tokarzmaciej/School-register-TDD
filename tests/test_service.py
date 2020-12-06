@@ -3,7 +3,7 @@ from unittest.mock import *
 from unittest import TestCase, main
 
 
-class test_Service(TestCase):
+class ServiceTest(TestCase):
     def test_export_first_student(self):
         test_object = Service()
         test_object.data = Mock(name="data")

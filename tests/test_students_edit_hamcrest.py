@@ -19,7 +19,7 @@ class StudentsAssertPyTest(unittest.TestCase):
     def test_edit_type_error(self):
         assert_that(calling(self.temp.editStudent)
                     .with_args(2, "Marcel", "Bialy", None, "Pola"),
-                    raises(Exception))
+                    raises(TypeError))
 
     def tearDown(self):
         self.temp = None

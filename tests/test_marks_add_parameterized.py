@@ -11,8 +11,8 @@ class MarksAddParameterizedPackage(unittest.TestCase):
     @parameterized.expand([
         (4, "Alicja", "Zielonka", "math", "test", 2, ('test', 2)),
     ])
-    def test_add_mark_positive_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
-        self.assertIn(expected, self.tmp.addMark(id, name, surname, name_subject, name_mark, grade))
+    def test_add_mark_positive_expand(self, id_student, name, surname, name_subject, name_mark, grade, expected):
+        self.assertIn(expected, self.tmp.addMark(id_student, name, surname, name_subject, name_mark, grade))
 
     @parameterized.expand([
         (4, "Alicja", "Zielonka", "math", "test", 7, "Bad_range_marks"),
@@ -20,14 +20,16 @@ class MarksAddParameterizedPackage(unittest.TestCase):
         (3, "Kacper", "Stoch", "geography", "activity", 5, "Student_not_have_this_subject"),
         (6, "Michal", "Krakowiak", "art", "singing_hymn", 3, "This_mark_already_exists")
     ])
-    def test_add_mark_exceptions_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
-        self.assertRaisesRegex(Exception, expected, self.tmp.addMark, id, name, surname, name_subject, name_mark, grade)
+    def test_add_mark_exceptions_expand(self, id_student, name, surname, name_subject, name_mark, grade, expected):
+        self.assertRaisesRegex(Exception, expected, self.tmp.addMark, id_student, name, surname, name_subject,
+                               name_mark, grade)
 
     @parameterized.expand([
         (5, "Piotr", "Fantazja", "math", "test", "1", "Bad_type_grade"),
     ])
-    def test_add_mark_type_errors_expand(self, id, name, surname, name_subject, name_mark, grade, expected):
-        self.assertRaisesRegex(TypeError, expected, self.tmp.addMark, id, name, surname, name_subject, name_mark, grade)
+    def test_add_mark_type_errors_expand(self, id_student, name, surname, name_subject, name_mark, grade, expected):
+        self.assertRaisesRegex(TypeError, expected, self.tmp.addMark, id_student, name, surname, name_subject,
+                               name_mark, grade)
 
     @parameterized_class(("id", "name", "surname", "name_subject", "new_mark", "grade", "expected"), [
         (4, "Alicja", "Zielonka", "math", "test", 2, ('test', 2)),
