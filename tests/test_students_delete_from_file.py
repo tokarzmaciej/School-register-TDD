@@ -1,10 +1,11 @@
 import unittest
 from src.students import *
+from src.exampleData import Data
 
 
 class StudentsParameterizedFile(unittest.TestCase):
     def setUp(self):
-        self.temp = Students()
+        self.temp = Students(Data().example)
 
     def test_student_delete_from_file(self):
         fileTest = open("data/test_students_delete.txt")

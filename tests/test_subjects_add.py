@@ -1,12 +1,13 @@
 import unittest
 from assertpy import assert_that
 from src.subjects import Subjects
+from src.exampleData import Data
 
 
 class SubjectsAssertPyTest(unittest.TestCase):
 
     def setUp(self):
-        self.temp = Subjects()
+        self.temp = Subjects(Data().example)
 
     def test_add_subjects_positive(self):
         result = {'subjects': {"english": {}}, 'remarks': {}}

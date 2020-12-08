@@ -2,12 +2,13 @@ import unittest
 from key_generator.key_generator import generate
 from src.students import Students
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class StudentsParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Students()
+        self.tmp = Students(Data().example)
 
     @parameterized.expand([
         (generate().get_key(), "Adam", "Nowak", ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})),
@@ -34,7 +35,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_add_class(self):
             self.assertEqual(self.tmp.addStudent(self.id, self.name, self.surname), self.expected)
@@ -44,7 +45,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_add_exception_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.addStudent, self.id, self.name, self.surname)
@@ -54,7 +55,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedErrorPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_add_type_error_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.addStudent, self.id, self.name, self.surname)

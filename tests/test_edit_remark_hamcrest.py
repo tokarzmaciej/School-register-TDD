@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.remark import Remarks
+from src.exampleData import Data
 
 
 class RemarksEditHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Remarks()
+        self.temp = Remarks(Data().example)
 
     def test_edit_remark_name_positive(self):
         assert_that(

@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.remark import Remarks
+from src.exampleData import Data
 
 
 class RemarksAddHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Remarks()
+        self.temp = Remarks(Data().example)
 
     def test_add_remark_positive(self):
         result = {'volunteering': 'cleaning_the_environment'}

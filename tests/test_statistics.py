@@ -1,12 +1,13 @@
 import unittest
 from assertpy import assert_that
 from src.statistics import Statistics
+from src.exampleData import Data
 
 
 class StatisticsAssertPyTest(unittest.TestCase):
 
     def setUp(self):
-        self.temp = Statistics()
+        self.temp = Statistics(Data().example)
 
     def test_average_subjects_positive(self):
         assert_that(self.temp.averageSubjects(7, "Ewelina", "Swoboda")[1]) \

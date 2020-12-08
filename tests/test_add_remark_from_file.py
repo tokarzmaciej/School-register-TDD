@@ -1,11 +1,12 @@
 import unittest
 from src.remark import *
+from src.exampleData import Data
 
 
 class RemarkAddParameterizedFile(unittest.TestCase):
     def test_add_remark_from_file(self):
         fileTest = open("data/test_add_remark.txt")
-        tmp = Remarks()
+        tmp = Remarks(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -19,7 +20,7 @@ class RemarkAddParameterizedFile(unittest.TestCase):
 
     def test_add_remark_exceptions_from_file(self):
         fileTest = open("data/test_add_remark_exceptions.txt")
-        tmp = Remarks()
+        tmp = Remarks(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue

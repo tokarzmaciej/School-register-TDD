@@ -1,12 +1,13 @@
 import unittest
 from src.students import Students
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class StudentsParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Students()
+        self.tmp = Students(Data().example)
 
     @parameterized.expand([
         (1, "Kasia", "Polak", ('1', 'Kasia', 'Polak')),
@@ -25,7 +26,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_delete_class(self):
             self.assertNotIn(self.tmp.deleteStudent(self.id, self.name, self.surname), self.expected)
@@ -35,7 +36,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_delete_exception_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.deleteStudent, self.id, self.name, self.surname)

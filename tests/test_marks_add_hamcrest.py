@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.marks import Marks
+from src.exampleData import Data
 
 
 class MarksAddHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Marks()
+        self.temp = Marks(Data().example)
 
     def test_add_mark_positive(self):
         assert_that(self.temp.addMark(4, "Alicja", "Zielonka", "math", "test", 2),

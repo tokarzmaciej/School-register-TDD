@@ -1,12 +1,13 @@
 import unittest
 from src.subjects import Subjects
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class SubjectsEditParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Subjects()
+        self.tmp = Subjects(Data().example)
 
     @parameterized.expand([
         (6, "Michal", "Krakowiak", "art", "history_art", "history_art"),
@@ -36,7 +37,7 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsEditParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_edit_subjects_positive_class(self):
             self.assertIn(self.expected, self.tmp.editSubject(self.id, self.name, self.surname, self.name_subject,
@@ -48,7 +49,7 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsEditExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_edit_subjects_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editSubject, self.id, self.name, self.surname,
@@ -59,7 +60,7 @@ class SubjectsEditParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsEditTypeErrorsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_edit_subjects_type_errors_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.editSubject, self.id, self.name, self.surname,

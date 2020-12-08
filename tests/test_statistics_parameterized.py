@@ -1,12 +1,13 @@
 import unittest
 from src.statistics import Statistics
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class StatisticsParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Statistics()
+        self.tmp = Statistics(Data().example)
 
     @parameterized.expand([
         (7, "Ewelina", "Swoboda", 4)
@@ -41,7 +42,7 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     ])
     class StatisticsSubjectsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Statistics()
+            self.tmp = Statistics(Data().example)
 
         def test_average_subjects_class(self):
             self.assertLessEqual(self.expected, self.tmp.averageSubjects(self.id, self.name, self.surname)[1])
@@ -51,7 +52,7 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     ])
     class StatisticsSubjectParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Statistics()
+            self.tmp = Statistics(Data().example)
 
         def test_average_subject_class(self):
             self.assertGreaterEqual(self.expected,
@@ -64,7 +65,7 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     ])
     class StatisticsSubjectsExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Statistics()
+            self.tmp = Statistics(Data().example)
 
         def test_average_subjects_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.averageSubjects, self.id, self.name, self.surname)
@@ -76,7 +77,7 @@ class StatisticsParameterizedPackage(unittest.TestCase):
     ])
     class StatisticsSubjectExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Statistics()
+            self.tmp = Statistics(Data().example)
 
         def test_average_subject_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.averageSubject, self.id, self.name, self.surname,

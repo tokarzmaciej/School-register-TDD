@@ -1,12 +1,13 @@
 import unittest
 from assertpy import assert_that
 from src.remark import Remarks
+from src.exampleData import Data
 
 
 class RemarksEditAssertPyTest(unittest.TestCase):
 
     def setUp(self):
-        self.temp = Remarks()
+        self.temp = Remarks(Data().example)
 
     def test_edit_remark_name_positive(self):
         assert_that(self.temp.editRemarkName(8, "Konrad", "Piasek", "disturbing_lesson", "disturbing_math_lesson")[1]) \

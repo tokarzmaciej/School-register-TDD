@@ -1,12 +1,13 @@
 import unittest
 from src.remark import Remarks
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class RemarksEditParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Remarks()
+        self.tmp = Remarks(Data().example)
 
     @parameterized.expand([
         (8, "Konrad", "Piasek", "disturbing_lesson", "disturbing_math_lesson", "math_lesson")
@@ -47,7 +48,7 @@ class RemarksEditParameterizedPackage(unittest.TestCase):
     ])
     class RemarkEditNameParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_edit_remark_name_class(self):
             self.assertIn(self.expected, self.tmp.editRemarkName(self.id, self.name, self.surname, self.name_remark,
@@ -58,7 +59,7 @@ class RemarksEditParameterizedPackage(unittest.TestCase):
     ])
     class RemarkEditDescriptionParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_edit_remark_description_class(self):
             self.assertIn(self.expected,
@@ -71,7 +72,7 @@ class RemarksEditParameterizedPackage(unittest.TestCase):
     ])
     class RemarkEditNameExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_edit_remark_name_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editRemarkName, self.id, self.name, self.surname,
@@ -84,7 +85,7 @@ class RemarksEditParameterizedPackage(unittest.TestCase):
     ])
     class RemarkEditDescriptionExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_edit_remark_description_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editRemarkDescription, self.id, self.name,

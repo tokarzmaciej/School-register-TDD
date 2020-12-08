@@ -1,17 +1,18 @@
 import pytest
 from src.subjects import Subjects
+from src.exampleData import Data
 
 
 def test_add_subjects_positive():
     result = {'subjects': {"english": {}}, 'remarks': {}}
-    assert Subjects().addSubject(2, "Beata", "Jankowska", "english") == result
+    assert Subjects(Data().example).addSubject(2, "Beata", "Jankowska", "english") == result
 
 
 def test_add_subject_to_lack_student():
     with pytest.raises(Exception):
-        Subjects().addSubject(12, "Zosia", "Kucharska", "math")
+        Subjects(Data().example).addSubject(12, "Zosia", "Kucharska", "math")
 
 
 def test_add_subject_name_subject_bad_type():
     with pytest.raises(TypeError):
-        Subjects().addSubject(2, "Beata", "Jankowska", True)
+        Subjects(Data().example).addSubject(2, "Beata", "Jankowska", True)

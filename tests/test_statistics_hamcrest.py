@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.statistics import Statistics
+from src.exampleData import Data
 
 
 class AverageHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Statistics()
+        self.temp = Statistics(Data().example)
 
     def test_average_subjects_positive(self):
         assert_that(

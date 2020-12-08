@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.students import Students
+from src.exampleData import Data
 
 
 class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Students()
+        self.temp = Students(Data().example)
 
     def test_delete_lack_student(self):
         assert_that(calling(self.temp.deleteStudent)

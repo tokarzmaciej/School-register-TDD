@@ -1,12 +1,13 @@
 import unittest
 from src.marks import Marks
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class MarksAddParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Marks()
+        self.tmp = Marks(Data().example)
 
     @parameterized.expand([
         (4, "Alicja", "Zielonka", "math", "test", 2, ('test', 2)),
@@ -37,7 +38,7 @@ class MarksAddParameterizedPackage(unittest.TestCase):
     ])
     class MarksAddParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Marks()
+            self.tmp = Marks(Data().example)
 
         def test_add_mark_positive_class(self):
             self.assertIn(self.expected, self.tmp.addMark(self.id, self.name, self.surname, self.name_subject,
@@ -51,7 +52,7 @@ class MarksAddParameterizedPackage(unittest.TestCase):
     ])
     class MarksAddExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Marks()
+            self.tmp = Marks(Data().example)
 
         def test_add_mark_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.addMark, self.id, self.name, self.surname,
@@ -63,7 +64,7 @@ class MarksAddParameterizedPackage(unittest.TestCase):
     ])
     class MarksAddTypeErrorsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Marks()
+            self.tmp = Marks(Data().example)
 
         def test_add_mark_type_errors_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.addMark, self.id, self.name, self.surname,

@@ -1,10 +1,11 @@
 import unittest
 from src.remark import *
+from src.exampleData import Data
 
 
 class RemarkEditParameterizedFile(unittest.TestCase):
     def setUp(self):
-        self.tmp = Remarks()
+        self.tmp = Remarks(Data().example)
 
     def test_edit_remark_name_from_file(self):
         fileTest = open("data/test_remark_edit_name.txt")

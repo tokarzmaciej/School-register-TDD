@@ -2,11 +2,12 @@ import unittest
 from assertpy import assert_that
 from src.students import Students
 from key_generator.key_generator import generate
+from src.exampleData import Data
 
 
 class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Students()
+        self.temp = Students(Data().example)
 
     def test_add_student_positive(self):
         result = ('Add student', 'Adam', 'Nowak', {'subjects': {}, 'remarks': {}})

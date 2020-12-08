@@ -1,12 +1,13 @@
 import unittest
 from src.subjects import Subjects
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class SubjectsAddParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Subjects()
+        self.tmp = Subjects(Data().example)
 
     @parameterized.expand([
         (2, "Beata", "Jankowska", "english", {'subjects': {"english": {}}, 'remarks': {}}),
@@ -32,7 +33,7 @@ class SubjectsAddParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsAddParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_add_subjects_positive_class(self):
             self.assertEqual(self.tmp.addSubject(self.id, self.name, self.surname, self.name_subject), self.expected)
@@ -42,7 +43,7 @@ class SubjectsAddParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsAddExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_add_subjects_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.addSubject, self.id, self.name, self.surname,
@@ -53,7 +54,7 @@ class SubjectsAddParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsAddTypeErrorsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_add_subjects_type_error_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.addSubject, self.id, self.name, self.surname,

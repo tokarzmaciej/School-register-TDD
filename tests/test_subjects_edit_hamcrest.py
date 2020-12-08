@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.subjects import Subjects
+from src.exampleData import Data
 
 
 class SubjectsEditHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Subjects()
+        self.temp = Subjects(Data().example)
 
     def test_edit_subject_positive(self):
         assert_that(self.temp.editSubject(6, "Michal", "Krakowiak", "art", "history_art"),

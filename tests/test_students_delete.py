@@ -1,11 +1,12 @@
 import unittest
 from assertpy import assert_that
 from src.students import Students
+from src.exampleData import Data
 
 
 class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Students()
+        self.temp = Students(Data().example)
 
     def test_delete_lack_student(self):
         assert_that(self.temp.deleteStudent) \

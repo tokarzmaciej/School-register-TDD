@@ -1,12 +1,13 @@
 import unittest
 from src.students import Students
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class StudentsParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Students()
+        self.tmp = Students(Data().example)
 
     @parameterized.expand([
         (1, "Kasia", "Polak", "Asia", "Pola", "Asia"),
@@ -34,7 +35,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_edit_class(self):
             self.assertIn(self.tmp.editStudent(self.id, self.name, self.surname, self.new_name, self.new_surname)[0][1],
@@ -46,7 +47,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedExceptionsPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_edit_exception_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.editStudent, self.id, self.name, self.surname,
@@ -57,7 +58,7 @@ class StudentsParameterizedPackage(unittest.TestCase):
     ])
     class StudentParameterizedErrorsPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Students()
+            self.tmp = Students(Data().example)
 
         def test_student_edit_type_error_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.editStudent, self.id, self.name, self.surname,

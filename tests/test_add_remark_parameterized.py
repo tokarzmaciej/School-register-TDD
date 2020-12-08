@@ -1,12 +1,13 @@
 import unittest
 from src.remark import Remarks
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class RemarksAddParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Remarks()
+        self.tmp = Remarks(Data().example)
 
     @parameterized.expand([
         (2, "Beata", "Jankowska", "volunteering", "cleaning_the_environment",
@@ -29,7 +30,7 @@ class RemarksAddParameterizedPackage(unittest.TestCase):
     ])
     class RemarkAddParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_add_remark_positive_class(self):
             self.assertEqual(self.tmp.addRemark(self.id, self.name, self.surname, self.name_remark,
@@ -41,7 +42,7 @@ class RemarksAddParameterizedPackage(unittest.TestCase):
     ])
     class RemarkAddExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Remarks()
+            self.tmp = Remarks(Data().example)
 
         def test_add_remark_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.addRemark, self.id, self.name, self.surname,

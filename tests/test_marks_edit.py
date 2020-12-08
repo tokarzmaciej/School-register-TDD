@@ -1,12 +1,13 @@
 import unittest
 from assertpy import assert_that
 from src.marks import Marks
+from src.exampleData import Data
 
 
 class MarksEditAssertPyTest(unittest.TestCase):
 
     def setUp(self):
-        self.temp = Marks()
+        self.temp = Marks(Data().example)
 
     def test_edit_mark_positive(self):
         assert_that(self.temp.editMark(7, "Ewelina", "Swoboda", "physics", "quiz", 4)) \

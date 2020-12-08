@@ -1,12 +1,13 @@
 import unittest
 from src.subjects import Subjects
 from parameterized import parameterized, parameterized_class
+from src.exampleData import Data
 
 
 class SubjectsDeleteParameterizedPackage(unittest.TestCase):
 
     def setUp(self):
-        self.tmp = Subjects()
+        self.tmp = Subjects(Data().example)
 
     @parameterized.expand([
         (5, "Piotr", "Fantazja", "math", {'subjects': {'history': {}, 'art': {}}, 'remarks': {}}),
@@ -33,7 +34,7 @@ class SubjectsDeleteParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsDeleteParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_delete_subjects_positive_class(self):
             self.assertEqual(self.tmp.deleteSubject(self.id, self.name, self.surname, self.name_subject), self.expected)
@@ -44,7 +45,7 @@ class SubjectsDeleteParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsDeleteExceptionsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_delete_subjects_exceptions_class(self):
             self.assertRaisesRegex(Exception, self.expected, self.tmp.deleteSubject, self.id, self.name, self.surname,
@@ -55,7 +56,7 @@ class SubjectsDeleteParameterizedPackage(unittest.TestCase):
     ])
     class SubjectsDeleteTypeErrorsParameterizedPackageClass(unittest.TestCase):
         def setUp(self):
-            self.tmp = Subjects()
+            self.tmp = Subjects(Data().example)
 
         def test_delete_subjects_type_errors_class(self):
             self.assertRaisesRegex(TypeError, self.expected, self.tmp.deleteSubject, self.id, self.name, self.surname,

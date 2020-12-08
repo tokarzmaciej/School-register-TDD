@@ -1,12 +1,13 @@
 import unittest
 from src.students import *
+from src.exampleData import Data
 
 
 class StudentsParameterizedFile(unittest.TestCase):
 
     def test_student_add_from_file(self):
         fileTest = open("data/test_students_add.txt")
-        tmpStudents = Students()
+        tmpStudents = Students(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -20,7 +21,7 @@ class StudentsParameterizedFile(unittest.TestCase):
 
     def test_student_add_from_file_exceptions(self):
         fileTest = open("data/test_students_add_exception.txt")
-        tmpStudents = Students()
+        tmpStudents = Students(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -32,7 +33,7 @@ class StudentsParameterizedFile(unittest.TestCase):
 
     def test_student_add_from_file_type_error(self):
         fileTest = open("data/test_students_add_type_error.txt")
-        tmpStudents = Students()
+        tmpStudents = Students(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue

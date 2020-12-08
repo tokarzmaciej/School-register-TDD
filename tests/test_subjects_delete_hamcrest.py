@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.subjects import Subjects
+from src.exampleData import Data
 
 
 class SubjectsDeleteHamcrestTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Subjects()
+        self.temp = Subjects(Data().example)
 
     def test_delete_subject_positive(self):
         result = {'subjects': {'history': {}, 'art': {}}, 'remarks': {}}

@@ -1,11 +1,12 @@
 import unittest
 from hamcrest import *
 from src.students import Students
+from src.exampleData import Data
 
 
 class StudentsAssertPyTest(unittest.TestCase):
     def setUp(self):
-        self.temp = Students()
+        self.temp = Students(Data().example)
 
     def test_edit_student_positive(self):
         assert_that(self.temp.editStudent(1, "Kasia", "Polak", "Asia", "Pola")[0][1],

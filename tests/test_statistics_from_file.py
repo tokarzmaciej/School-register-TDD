@@ -1,11 +1,12 @@
 import unittest
 from src.statistics import *
+from src.exampleData import Data
 
 
 class StatisticsParameterizedFile(unittest.TestCase):
     def test_average_subject_from_file(self):
         fileTest = open("data/test_statistics_subject.txt")
-        tmp = Statistics()
+        tmp = Statistics(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -17,7 +18,7 @@ class StatisticsParameterizedFile(unittest.TestCase):
 
     def test_average_subjects_from_file(self):
         fileTest = open("data/test_statistics_subjects.txt")
-        tmp = Statistics()
+        tmp = Statistics(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -29,7 +30,7 @@ class StatisticsParameterizedFile(unittest.TestCase):
 
     def test_average_subject_from_file_exceptions(self):
         fileTest = open("data/test_statistics_subject_exceptions.txt")
-        tmp = Statistics()
+        tmp = Statistics(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
@@ -41,7 +42,7 @@ class StatisticsParameterizedFile(unittest.TestCase):
 
     def test_average_subjects_from_file_exceptions(self):
         fileTest = open("data/test_statistics_subjects_exceptions.txt")
-        tmp = Statistics()
+        tmp = Statistics(Data().example)
         for line in fileTest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue
